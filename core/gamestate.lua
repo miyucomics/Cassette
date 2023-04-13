@@ -1,6 +1,6 @@
 local Colors = require("core/colors")
 local Gamestate = {
-	gamestate = "win",
+	gamestate = "title",
 	states = {
 		title = require("core/title"),
 		game = require("core/game"),
