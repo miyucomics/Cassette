@@ -30,7 +30,6 @@ function Game.start ()
 		for j = 1, 5 do
 			sum = sum + grid[i][j]
 		end
-		print(table.concat(grid[i], ", "))
 		table.insert(Game.rowSums, sum)
 	end
 
