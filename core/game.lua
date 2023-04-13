@@ -73,7 +73,7 @@ function Game.mousepressed (x, y)
 			Cursor.rotation = cassette.rotation
 			Cursor.da = cassette.da
 			table.remove(Game.cassettes, _)
-			break
+			return
 		end
 	end
 
@@ -120,7 +120,6 @@ function Game.check ()
 	for _, slot in pairs(Game.tray.slots) do
 		table.insert(numbers, slot.data)
 	end
-	print(table.concat(numbers), ", ")
 
 	local grid = {}
 	local index = 1
@@ -156,6 +155,13 @@ function Game.check ()
 		return
 	end
 	Manager:emit("setGamestate", "lose")
+	Game.numbers = {}
+	Game.rowSums = {}
+	Game.columnSums = {}
+	Game.slottedIn = 0
+	for _, slot in pairs(Game.tray.slots) do
+		slot.data = nil
+	end
 end
 
 return Game
