@@ -21,7 +21,7 @@ function Game.start ()
 		for j = 1, 5 do
 			number = love.math.random(0, 9)
 			table.insert(Game.numbers, number)
-			grid[i][j] = love.math.random(0, 9)
+			grid[i][j] = number
 		end
 	end
 
@@ -30,6 +30,7 @@ function Game.start ()
 		for j = 1, 5 do
 			sum = sum + grid[i][j]
 		end
+		print(table.concat(grid[i], ", "))
 		table.insert(Game.rowSums, sum)
 	end
 
