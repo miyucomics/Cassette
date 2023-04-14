@@ -150,6 +150,13 @@ function Game.check ()
 		table.insert(newCols, sum)
 	end
 
+	
+
+	if tablesEqual(Game.rowSums, newRows) and tablesEqual(Game.columnSums, newCols) then
+		Manager:emit("setGamestate", "win")
+	else
+		Manager:emit("setGamestate", "lose")
+	end
 	Game.numbers = {}
 	Game.rowSums = {}
 	Game.columnSums = {}
@@ -157,12 +164,6 @@ function Game.check ()
 	for _, slot in pairs(Game.tray.slots) do
 		slot.data = nil
 	end
-
-	if tablesEqual(Game.rowSums, newRows) and tablesEqual(Game.columnSums, newCols) then
-		Manager:emit("setGamestate", "win")
-		return
-	end
-	Manager:emit("setGamestate", "lose")
 end
 
 return Game
